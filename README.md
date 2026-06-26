@@ -127,7 +127,6 @@ app.jwt.expiration=86400000
 
 # CORS
 app.cors.allowed-origins=http://localhost:3000
-
 ```
 
 ---
