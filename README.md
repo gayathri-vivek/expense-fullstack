@@ -101,19 +101,33 @@ docker run --name expenseiq-db \
 Open `backend/src/main/resources/application.properties`:
 
 ```properties
+# Server
 server.port=8080
+spring.jackson.time-zone=UTC
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/expenseiq?TimeZone=Asia/Kolkata
+# PostgreSQL Database
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/expenseiq?TimeZone=UTC
 spring.datasource.username=postgres
 spring.datasource.password=password123
+spring.datasource.driver-class-name=org.postgresql.Driver
 
+
+
+# JPA / Hibernate
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.jdbc.time_zone=UTC
 
+# JWT
 app.jwt.secret=expenseiq_super_secret_key_minimum_256_bits_long_for_hs256_algorithm
 app.jwt.expiration=86400000
 
+# CORS
 app.cors.allowed-origins=http://localhost:3000
+
 ```
 
 ---
